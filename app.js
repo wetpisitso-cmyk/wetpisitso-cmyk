@@ -2,7 +2,7 @@
   RMUTI GitHub Pages Frontend
   นำ URL /exec จาก Google Apps Script มาใส่แทนค่าด้านล่าง
 */
-const API_URL = 'PASTE_YOUR_APPS_SCRIPT_EXEC_URL_HERE';
+const API_URL = 'https://script.google.com/macros/s/AKfycbwj5kPzF3v4yTvN0rv2n92egktw-CNeYPU0NAh7VN9ZXQQrO2lU98QwnDwwkm93HmZj/exec';
 
 const $ = s => document.querySelector(s);
 const jobsEl = $('#jobs');
