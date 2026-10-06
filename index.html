@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b1f3a">
+  <title>RMUTI KKC Recruitment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">RMUTI</div>
+      <div>
+        <strong>ระบบรับสมัครบุคลากรออนไลน์</strong>
+        <span>มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน วิทยาเขตขอนแก่น</span>
+      </div>
+    </div>
+    <div class="status" id="apiStatus">กำลังเชื่อมต่อระบบ…</div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">RMUTI KKC • RECRUITMENT</p>
+        <h1>สมัครงานออนไลน์<br><span>รวดเร็ว ใช้งานง่าย</span></h1>
+        <p class="lead">หน้าเว็บทำงานบน GitHub Pages และบันทึกข้อมูลผ่าน Google Apps Script ไปยัง Google Sheets</p>
+      </div>
+      <div class="hero-card">
+        <span>สถานะระบบ</span>
+        <strong id="heroStatus">กำลังตรวจสอบ…</strong>
+        <small id="heroDetail">เชื่อมต่อ API</small>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">ตำแหน่งที่เปิดรับ</p>
+            <h2>งานที่สมัครได้</h2>
+          </div>
+          <button class="ghost" id="reloadJobs" type="button">รีเฟรช</button>
+        </div>
+        <div id="jobs" class="jobs">
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
+        </div>
+      </article>
+
+      <article class="panel">
+        <p class="eyebrow">แบบฟอร์มสมัคร</p>
+        <h2>ข้อมูลผู้สมัคร</h2>
+
+        <form id="applyForm" autocomplete="on">
+          <input type="hidden" name="action" value="submitApplication">
+          <input type="hidden" name="requestId" id="requestId">
+
+          <label>
+            ตำแหน่งที่สมัคร
+            <select name="jobId" id="jobId" required>
+              <option value="">กำลังโหลดตำแหน่ง…</option>
+            </select>
+          </label>
+
+          <div class="two">
+            <label>
+              ชื่อ
+              <input name="firstName" required maxlength="80" placeholder="ชื่อ">
+            </label>
+            <label>
+              นามสกุล
+              <input name="lastName" required maxlength="80" placeholder="นามสกุล">
+            </label>
+          </div>
+
+          <label>
+            อีเมล
+            <input type="email" name="email" required maxlength="160" placeholder="name@example.com">
+          </label>
+
+          <label>
+            เบอร์โทรศัพท์
+            <input type="tel" name="phone" required maxlength="20" inputmode="tel" placeholder="08xxxxxxxx">
+          </label>
+
+          <label>
+            หมายเหตุ
+            <textarea name="note" maxlength="1000" rows="4" placeholder="ข้อมูลเพิ่มเติม (ถ้ามี)"></textarea>
+          </label>
+
+          <button class="primary" id="submitBtn" type="submit">
+            <span>ส่งใบสมัคร</span>
+          </button>
+
+          <p class="form-note">GitHub Pages → Apps Script → Google Sheets</p>
+          <div class="alert" id="formAlert" hidden></div>
+        </form>
+      </article>
+    </section>
+  </main>
+
+  <iframe name="apiFrame" id="apiFrame" class="hidden-frame" title="API transport"></iframe>
+  <script src="./app.js"></script>
+</body>
+</html>
